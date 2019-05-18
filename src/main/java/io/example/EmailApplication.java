@@ -59,5 +59,8 @@ public class EmailApplication {
         }
 
     }
+	public void hello(){
+		System.out.println("hello");	
+	}
 
 }
