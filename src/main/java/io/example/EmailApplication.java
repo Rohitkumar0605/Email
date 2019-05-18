@@ -60,5 +60,8 @@ public class EmailApplication {
 	public static void send() {
     	System.out.println("second");
     }
+	public void hello(){
+		System.out.println("hello");	
+	}
 
 }
