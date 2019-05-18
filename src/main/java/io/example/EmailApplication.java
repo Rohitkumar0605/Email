@@ -19,45 +19,46 @@ public class EmailApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EmailApplication.class, args);
 		sendEmail();
+		send();
 	}
-	
+
 	public static void sendEmail() {
-    	System.out.println("inside sendEmail1");
+		System.out.println("inside sendEmail1");
 
-    	
-        final String username = "Enter your Email id";
-        final String password = "Password";
+		final String username = "Enter your Email id";
+		final String password = "Password";
 
-        Properties props = new Properties();
-        props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
+		Properties props = new Properties();
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
 
-        Session session = Session.getInstance(props,
-          new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(username, password);
-            }
-          });
-        
-        try {
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		});
 
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("rohit060593@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO,
-                InternetAddress.parse("rohitkumar999rns@gmail.com"));
-            message.setSubject("Testing Subject");
-            message.setText("for testing");
+		try {
 
-            Transport.send(message);
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("rohit060593@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("rohitkumar999rns@gmail.com"));
+			message.setSubject("Testing Subject");
+			message.setText("for testing");
 
-            System.out.println("Done");
+			Transport.send(message);
 
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        }
+			System.out.println("Done");
 
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+	public static void send() {
+    	System.out.println("second");
     }
 
 }
